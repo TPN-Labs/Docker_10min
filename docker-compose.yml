@@ -1,0 +1,18 @@
+version: '3'
+services:
+  api:
+    build: .
+    depends_on:
+      - database
+    ports:
+      - "3003:3003"
+
+  database:
+    image: "mysql"
+    environment:
+      - MYSQL_ROOT_PASSWORD=value
+    volumes:
+      - db_data:/mysql
+
+volumes:
+  db_data:
